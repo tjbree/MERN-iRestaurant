@@ -1,6 +1,6 @@
 import { zomatoKey } from '../env.js'
 
-export function searchRestaurant(location = 'Sydney', keyword) {   
+export function searchCategory(id) {   
     return (dispatch, getState) => {
         let myHeaders = new Headers()
         myHeaders.append('user-key', zomatoKey)
@@ -12,18 +12,15 @@ export function searchRestaurant(location = 'Sydney', keyword) {
         }
         
         const baseUrl = 'https://developers.zomato.com/api/v2.1'
-        fetch(`${baseUrl}/locations?query=${location}`, requestOptions)
+        fetch(`${baseUrl}/search?entity_id=260&entity_type=city&category=${id}`, requestOptions)
         .then(response => response.json())
         .then(result => {
-            const entityId = result['location_suggestions'][0]['entity_id']
-            fetch(`${baseUrl}/search?entity_id=${entityId}&entity_type=city&q=${keyword}`, requestOptions)
-            .then(response => response.json())
-            .then(result => dispatch({
+           dispatch({
                 type: "SEARCH",
                 payload: result
-            }))
-            .catch(error => console.log('error', error))
-        })       
+            })           
+        })  
+        .catch(error => console.log('error', error))     
     }
 }
 

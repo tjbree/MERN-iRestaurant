@@ -1,0 +1,19 @@
+body {
+    margin: 20px auto;
+}
+.card-img-overlay {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.card-img-overlay > button {
+    font-size: 36px;
+    background: none;
+    border: none;
+}
+
+.card-img {
+    opacity: 0.8;
+    object-fit: cover;
+}

@@ -8,6 +8,7 @@ import 'bootstrap/dist/css/bootstrap.min.css'
 import './App.css'
 
 function App() {
+
   return (
     <div className="App">
       <Header />
@@ -18,11 +19,12 @@ function App() {
         <Route path="/restaurants">
           <Restaurant />
         </Route>
-        <Route path="/favlist">favlist</Route>
-        <Route path="/blacklist">blacklist</Route>
+        <Route path="/list">list</Route>
+        <Route path="/log">log</Route>
       </Switch>
     </div>
   )
 }
 
 export default App
+

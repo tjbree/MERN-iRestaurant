@@ -25,10 +25,10 @@ function Header() {
               <Collapse isOpen={isOpen} navbar>
                 <Nav className='ml-auto' navbar>
                     <NavbarText className='mr-4'> 
-                        <Link to="/favlist">FavList</Link>     
+                        <Link to="/list">My List</Link>     
                     </NavbarText>
                     <NavbarText>
-                        <Link to="/blacklist">BlackList</Link> 
+                        <Link to="/log">Log</Link> 
                     </NavbarText>
                 </Nav>
               </Collapse>

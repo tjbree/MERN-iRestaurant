@@ -1,6 +1,7 @@
 import React, { useState } from 'react'
 import { useHistory } from 'react-router-dom'
 import { useDispatch } from 'react-redux'
+import Categories from './Categories'
 import { searchRestaurant } from '../actions/searchAction'
 
 import {
@@ -25,18 +26,16 @@ function Home() {
     const onChange = e => {
       e.target.name === 'name' ? setName(e.target.value) : setLocation(e.target.value)
     }
-
+    
     const onSubmit = (e) => {
       e.preventDefault()
-      dispatch(searchRestaurant(260, name))
-      
-      history.push("/restaurants")
-      
+      dispatch(searchRestaurant(location, name))
+      history.push("/restaurants")      
     }
     
     return (
         <Container>
-          <h2>Search a restaurant or browse the categories</h2>
+          <h2>Search a restaurant by its name</h2>
           <Form onSubmit={onSubmit}>
             <Row form>
               <Col md={6}>
@@ -60,7 +59,7 @@ function Home() {
                       name='location'
                       id='location'
                       value={location}
-                      onChange={onChange}
+                      onChange={onChange}                  
                   />
                 </FormGroup>
               </Col>
@@ -72,7 +71,9 @@ function Home() {
                 </FormGroup>
               </Col>
             </Row>
-          </Form>        
+          </Form>
+          <h2 style={{ marginTop: '2rem' }}>Or, browse the categories</h2>   
+          <Categories/>    
         </Container>
       )
 }

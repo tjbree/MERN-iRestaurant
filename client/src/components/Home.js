@@ -3,6 +3,7 @@ import { useHistory } from 'react-router-dom'
 import { useDispatch } from 'react-redux'
 import Categories from './Categories'
 import { searchRestaurant } from '../actions/searchAction'
+import { isLoading } from '../actions/loadingAction'
 
 import {
   Container,
@@ -30,7 +31,8 @@ function Home() {
     const onSubmit = (e) => {
       e.preventDefault()
       dispatch(searchRestaurant(location, name))
-      history.push("/restaurants")      
+      dispatch(isLoading())
+      history.push('/restaurants')      
     }
     
     return (

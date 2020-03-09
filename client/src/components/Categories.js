@@ -1,5 +1,5 @@
 import React from 'react'
-import { useDispatch } from "react-redux"
+import { useDispatch } from 'react-redux'
 import { useHistory } from 'react-router-dom'
 import { searchCategory } from '../actions/searchCategory'
 import {
@@ -10,7 +10,6 @@ import {
   CardImgOverlay,
   Button
 } from 'reactstrap'
-
 
 function Categories () {
     const dispatch = useDispatch()
@@ -47,12 +46,12 @@ function Categories () {
     const handleClick = (e, id) => {
         e.preventDefault()
         dispatch(searchCategory(id))
-        history.push("/restaurants")        
+        history.push('/restaurants')        
     }
     
     const listed1 = categoriesData1.map(value => (
         <Card key={value.id} inverse>
-            <CardImg className='card-img' max-width={200} height={180} src={value.img} alt="restaurant img" />
+            <CardImg className='card-img' max-width={200} height={180} src={value.img} alt='restaurant img' />
             <CardImgOverlay>
                 <Button onClick={(e)=>handleClick(e, value.id)}>{value.name}</Button>
             </CardImgOverlay>
@@ -60,7 +59,7 @@ function Categories () {
     ))
     const listed2 = categoriesData2.map(value => (
         <Card key={value.id} inverse>
-            <CardImg className='card-img' max-width={200} height={180} src={value.img} alt="restaurant img" />
+            <CardImg className='card-img' max-width={200} height={180} src={value.img} alt='restaurant img' />
             <CardImgOverlay>
                 <Button onClick={(e)=>handleClick(e, value.id)}>{value.name}</Button>
             </CardImgOverlay>

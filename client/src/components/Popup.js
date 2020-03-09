@@ -1,4 +1,5 @@
-import React, { useState } from 'react';
+import React, { useState } from 'react'
+import PropTypes from 'prop-types'
 import {
     Modal,
     ModalHeader,
@@ -23,6 +24,7 @@ function Popup({ isOpen, setIsOpen, data }) {
     }
     const [note, setNote] = useState('')
     const {id, name, thumb} = data
+
     const onChange = e => {
         setNote(e.target.value)
     }
@@ -32,7 +34,7 @@ function Popup({ isOpen, setIsOpen, data }) {
         console.log(id, name, note)
         setNote('')
         // dispatch(saveList(id, name, note, date))
-        // history.push("/restaurants")      
+        // history.push('/restaurants')      
     }
     return (
         <Container>
@@ -63,6 +65,16 @@ function Popup({ isOpen, setIsOpen, data }) {
             </Modal>
         </Container>
     )
+}
+
+Popup.propTypes = {
+    isOpen: PropTypes.bool.isRequired,
+    setIsOpen: PropTypes.func.isRequired,
+    data: PropTypes.shape({
+        id: PropTypes.string.isRequired,
+        name: PropTypes.string.isRequired,
+        thumb: PropTypes.string
+    })
 }
 
 export default Popup

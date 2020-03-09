@@ -1,4 +1,5 @@
 import { zomatoKey } from '../env.js'
+import { isLoaded } from './loadingAction'
 
 export function searchRestaurant(location = 'Sydney', keyword) {   
     return (dispatch, getState) => {
@@ -19,9 +20,10 @@ export function searchRestaurant(location = 'Sydney', keyword) {
             fetch(`${baseUrl}/search?entity_id=${entityId}&entity_type=city&q=${keyword}`, requestOptions)
             .then(response => response.json())
             .then(result => dispatch({
-                type: "SEARCH",
+                type: 'SEARCH',
                 payload: result
             }))
+            .then(() => dispatch(isLoaded()))
             .catch(error => console.log('error', error))
         })       
     }

@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-import { Link } from "react-router-dom"
+import { Link } from 'react-router-dom'
 import {
   Collapse,
   Navbar,
@@ -19,16 +19,16 @@ function Header() {
           <Navbar color='dark' dark expand='sm' className='mb-5'>
             <Container>
               <NavbarText>
-                <Link to="/">iRestaurant</Link>
+                <Link to='/'>iRestaurant</Link>
               </NavbarText>       
               <NavbarToggler onClick={toggle} />
               <Collapse isOpen={isOpen} navbar>
                 <Nav className='ml-auto' navbar>
                     <NavbarText className='mr-4'> 
-                        <Link to="/list">My List</Link>     
+                        <Link to='/list'>My List</Link>     
                     </NavbarText>
                     <NavbarText>
-                        <Link to="/log">Log</Link> 
+                        <Link to='/log'>Log</Link> 
                     </NavbarText>
                 </Nav>
               </Collapse>

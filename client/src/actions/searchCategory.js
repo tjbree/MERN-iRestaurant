@@ -16,7 +16,7 @@ export function searchCategory(id) {
         .then(response => response.json())
         .then(result => {
            dispatch({
-                type: "SEARCH",
+                type: 'SEARCH',
                 payload: result
             })           
         })  

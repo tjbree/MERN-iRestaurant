@@ -1,5 +1,5 @@
 
-export default function RestaurantReducer(state = true, action) {
+export default function loadingReducer(state = false, action) {
     switch(action.type) {
         case 'LOADING':
             return true

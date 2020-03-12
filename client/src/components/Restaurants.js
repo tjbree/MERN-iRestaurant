@@ -17,9 +17,9 @@ function Restaurants () {
     }
     const data = useSelector(state => state['result'])
     const isLoading = useSelector(state => state['state'])
-    
+    const noresult = data['results_found'] === 0 ? true : false
     const total = Math.min(12, data['results_found'])
-    let listed = []
+    let listedItems = []
     for(let i = 0; i < Math.ceil(total / 3); i++){
         let temp = []
         for(let j = i * 3; j < 3 + i * 3; j++){
@@ -29,17 +29,21 @@ function Restaurants () {
                 )
             }          
         }
-        listed.push(<CardDeck key={i} style={{marginBottom: 10}}>{temp}</CardDeck>)
+        listedItems.push(<CardDeck key={i} style={{marginBottom: 10}}>{temp}</CardDeck>)
     }
     return (
-        <Container>
-            {!isLoading ? listed : <Spinner color='dark' />}
-            <Popup 
-                isOpen={isOpen}
-                setIsOpen={setIsOpen}
-                data={modalData}
-            />
-        </Container>
+        <>
+            <Container>
+                {isLoading ? <Spinner color='dark' /> : noresult ? <h2>Sorry, no result.</h2> : listedItems}           
+            </Container>
+            <Container>
+                <Popup 
+                    isOpen={isOpen}
+                    setIsOpen={setIsOpen}
+                    data={modalData}
+                />
+            </Container>
+        </>
     )
 }
 

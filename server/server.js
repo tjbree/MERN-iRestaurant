@@ -1,0 +1,44 @@
+const express = require('express')
+const mongoose = require('mongoose')
+const cors = require('cors')
+const path = require('path')
+require('dotenv').config()
+
+const app = express()
+
+app.use(cors())
+app.use(express.json())
+
+// Database
+const uri = process.env.ATLAS_URI;
+mongoose.connect(uri, { useUnifiedTopology: true, useNewUrlParser: true })
+    .then(() => console.log('Connected with MongoDB.'))
+    .catch(err => console.log(err))
+
+const connection = mongoose.connection
+connection.once('open', () => {
+  console.log('MongoDB database connection established successfully.')
+})
+
+// Routes
+const notesRouter = require('./routes/notes')
+// const authRouter = require('./routes/auth')
+
+app.use('/notes', notesRouter)
+// app.use('/auth', authRouter)
+
+
+// Serve static resource if it is in production
+if (process.env.NODE_ENV === 'production') {
+  // Set static folder
+  app.use(express.static('../client/build'))
+
+  app.get('*', (req, res) => {
+    const rootDirname = __dirname.substring(0, __dirname.length - 7)
+    res.sendFile(path.resolve(rootDirname, 'client', 'build', 'index.html'))
+  })
+}
+
+const port = process.env.PORT || 5000
+
+app.listen(port, () => console.log(`Server has started on port ${port}`))

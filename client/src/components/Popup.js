@@ -1,5 +1,7 @@
 import React, { useState } from 'react'
+import { useDispatch } from 'react-redux'
 import PropTypes from 'prop-types'
+import { saveToList } from '../actions/listAction'
 import {
     Modal,
     ModalHeader,
@@ -13,6 +15,7 @@ import {
 } from 'reactstrap';
 
 function Popup({ isOpen, setIsOpen, data }) {
+    const dispatch = useDispatch()
     const styles = {
         width: '450',
         height: '550',
@@ -32,9 +35,15 @@ function Popup({ isOpen, setIsOpen, data }) {
     const onSubmit = (e) => {
         e.preventDefault()
         console.log(id, name, note)
+        setIsOpen(!isOpen)
         setNote('')
-        // dispatch(saveList(id, name, note, date))
-        // history.push('/restaurants')      
+        const noteItem = {
+            userId: '1',
+            restaurantName: name,
+            img: thumb, 
+            note
+        }
+        dispatch(saveToList(noteItem))            
     }
     return (
         <Container>
@@ -71,8 +80,8 @@ Popup.propTypes = {
     isOpen: PropTypes.bool.isRequired,
     setIsOpen: PropTypes.func.isRequired,
     data: PropTypes.shape({
-        id: PropTypes.string.isRequired,
-        name: PropTypes.string.isRequired,
+        id: PropTypes.string,
+        name: PropTypes.string,
         thumb: PropTypes.string
     })
 }

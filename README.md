@@ -1,6 +1,6 @@
 # Welcome to iRestaurant
 
-This application is built using MERN stack, and deployed on Heroku.
+This application is built using MERN stack, and it's deployed on Heroku.
 
 It consumes the RESTful API provided by Zomato to receive data of the restaurants.
 
@@ -10,21 +10,12 @@ Click [here](https://com/) to see it on Heroku
 
 ![Home page](https://homepage.jpg)
 
-## Features
+## Stack
 
-* Basics: React, React-Router, Node.js, Express.js, MongoDB, Mongoose
+* Front-end Framework: React, React-Router
+* Hooks: React hooks, React-Router hooks, React-Redux hooks
 * State management: Redux.js
+* Back-end: Node.js, Express.js
+* Database: MongoDB, Mongoose ODM
 * Data fetching: fetch API
-* Hooks: React hooks, React-Router hooks, React-Redux Hooks
 * Responsive user interface: Bootstrap, Reactstrap
-
-## Quick start
-
-```sh
- git clone https://github.com/.git
- cd ii
- npm i
- npm start
- ```
-
-Then open [http://localhost:3000](http://localhost:3000)

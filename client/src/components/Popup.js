@@ -12,7 +12,7 @@ import {
     FormGroup,
     Input,
     Label
-} from 'reactstrap';
+} from 'reactstrap'
 
 function Popup({ isOpen, setIsOpen, data }) {
     const dispatch = useDispatch()

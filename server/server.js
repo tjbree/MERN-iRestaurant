@@ -10,8 +10,8 @@ app.use(cors())
 app.use(express.json())
 
 // Database
-const uri = process.env.ATLAS_URI;
-mongoose.connect(uri, { useUnifiedTopology: true, useNewUrlParser: true })
+const uri = process.env.ATLAS_URI
+mongoose.connect(uri, { useUnifiedTopology: true, useNewUrlParser: true, useCreateIndex: true })
     .then(() => console.log('Connected with MongoDB.'))
     .catch(err => console.log(err))
 
@@ -22,10 +22,12 @@ connection.once('open', () => {
 
 // Routes
 const notesRouter = require('./routes/notes')
-// const authRouter = require('./routes/auth')
+const usersRouter = require('./routes/users')
+const authRouter = require('./routes/auth')
 
 app.use('/notes', notesRouter)
-// app.use('/auth', authRouter)
+app.use('/users', usersRouter)
+app.use('/auth', authRouter)
 
 
 // Serve static resource if it is in production

@@ -25,7 +25,7 @@ function List () {
     ))
     return (
         <Container>{
-            !isAuthenticated ? <Redirect to='/login' /> : (lists.length > 0) ? listItems : <h4>You havn't save anything yet.</h4>}
+            !isAuthenticated ? <Redirect to='/login' /> : (lists.length > 0) ? listItems : <h4>You have not saved anything yet.</h4>}
         </Container>           
     )
 }

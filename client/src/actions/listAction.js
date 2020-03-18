@@ -9,9 +9,8 @@ export function fetchList() {
                 'x-auth-token': tokenConfig(getState)
             }
         }    
-        const baseUrl = 'http://localhost:5000'
-
-        fetch(`${baseUrl}/notes`, requestOptions)
+       
+        fetch('/notes', requestOptions)
         .then(response => response.json())
         .then(response => {
             dispatch({
@@ -34,8 +33,7 @@ export function saveToList(note) {
             body: JSON.stringify(note)
         }
         
-        const baseUrl = 'http://localhost:5000'
-        fetch(`${baseUrl}/notes`, requestOptions)
+        fetch('/notes', requestOptions)
         .then(response => response.json())
         .then(response => {
            dispatch({
@@ -56,9 +54,8 @@ export function removeFromList(noteId) {
                 'x-auth-token': tokenConfig(getState)
             }
         }    
-        const baseUrl = 'http://localhost:5000'
-
-        fetch(`${baseUrl}/notes/${noteId}`, requestOptions)
+      
+        fetch(`/notes/${noteId}`, requestOptions)
         .then(response => {
             dispatch({
                 type: 'DELETE',

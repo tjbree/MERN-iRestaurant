@@ -15,8 +15,8 @@ export const registerUser = ({ name, email, password }) => dispatch => {
         body: JSON.stringify({ name, email, password })
     }
 
-    const baseUrl = 'http://localhost:5000'
-    fetch(`${baseUrl}/users`, requestOptions)
+    
+    fetch('/users', requestOptions)
         .then(response => response.json())
         .then(result => {
             if(result.token) {
@@ -45,8 +45,7 @@ export const login = ({ email, password }) => dispatch => {
         body: JSON.stringify({ email, password })
     }
 
-    const baseUrl = 'http://localhost:5000'
-    fetch(`${baseUrl}/auth`, requestOptions)
+    fetch('/auth', requestOptions)
         .then(response => response.json())
         .then(result => {
             if(result.token) {

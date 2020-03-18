@@ -6,9 +6,8 @@ It consumes the RESTful API provided by Zomato to receive data of the restaurant
 
 ## Online demo
 
-Click [here](https://com/) to see it on Heroku
+Click [here](https://yanyan-mern-irestaurant.herokuapp.com) to see it on Heroku
 
-![Home page](https://homepage.jpg)
 
 ## Stack
 

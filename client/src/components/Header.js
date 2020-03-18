@@ -8,8 +8,7 @@ import {
   NavbarToggler,
   Nav,
   NavbarText,
-  Container,
-  Button
+  Container
 } from 'reactstrap'
 
 function Header() {
@@ -30,7 +29,7 @@ function Header() {
               <Collapse isOpen={isOpen} navbar>
                 <Nav className='ml-auto' navbar>
                     <NavbarText className='mr-4'> 
-                      Welcome {user.name}
+                      {isAuthenticated ? `Welcome ${user.name}` : 'Welcome'}
                     </NavbarText>
                     <NavbarText className='mr-4'> 
                       <Link to='/list'>My List</Link>

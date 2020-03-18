@@ -4,7 +4,8 @@
   "description": "Back-end for iRestaurant App",
   "main": "server.js",
   "scripts": {
-    "start": "node server.js"
+    "start": "node server.js",
+    "heroku-postbuild": "NPM_CONFIG_PRODUCTION=false && cd .. && cd client && npm install && npm run build"
   },
   "author": "Yanyan Zhao",
   "license": "MIT",

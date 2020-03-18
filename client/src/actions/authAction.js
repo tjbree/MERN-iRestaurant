@@ -1,29 +1,9 @@
 import { returnErrors } from './errorAction'
+import { fetchList } from './listAction'
 
-// Setup config/headers and token
 export const tokenConfig = getState => {
     const token = getState().auth.token
     if (token) return token
-}
-
-export const loadUser = () => (dispatch, getState) => {
-    dispatch({ type: 'USER_LOADING' })
-    
-    const baseUrl = 'http://localhost:5000'
-    fetch(`${baseUrl}/auth/user`, tokenConfig(getState))
-        .then(response => response.json())
-        .then(result => {
-            dispatch({
-                type: 'USER_LOADED',
-                payload: result
-            })           
-        })  
-        .catch(error => {
-            dispatch(returnErrors(error.data, error.status))
-            dispatch({
-                type: 'AUTH_ERROR'
-            })
-        })     
 }
 
 export const registerUser = ({ name, email, password }) => dispatch => {
@@ -44,6 +24,7 @@ export const registerUser = ({ name, email, password }) => dispatch => {
                     type: 'REGISTER_SUCCESS',
                     payload: result
                 })
+                dispatch(fetchList())
             } else {
                 dispatch(
                     returnErrors(result.msg)
@@ -73,6 +54,7 @@ export const login = ({ email, password }) => dispatch => {
                     type: 'LOGIN_SUCCESS',
                     payload: result
                 })
+
             } else {
                 dispatch(
                     returnErrors(result.msg)

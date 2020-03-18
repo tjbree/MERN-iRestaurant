@@ -1,6 +1,6 @@
-import React, { useEffect } from 'react'
+import React from 'react'
 import { useDispatch, useSelector } from 'react-redux'
-import { fetchList, removeFromList } from '../actions/listAction'
+import { removeFromList } from '../actions/listAction'
 import { Redirect } from 'react-router-dom'
 import {
     Container,
@@ -10,9 +10,6 @@ import {
 function List () {
     const dispatch = useDispatch()
     const { isAuthenticated } = useSelector(state => state['auth'])
-    useEffect(() => {
-        dispatch(fetchList())
-    }, [dispatch])
 
     const defaultImg = 'https://b.zmtcdn.com/data/collections/321f1ec4d05561145a0c2c9f697c4014_1581558950.jpg'
     const lists = useSelector(state => state['list'])

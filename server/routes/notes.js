@@ -2,11 +2,10 @@ const express = require('express')
 const { v4: uuidv4 } = require('uuid')
 const router = express.Router()
 const auth = require('../middleware/auth')
-
 const Note = require('../models/NoteModel')
 
-router.get('/:id', auth, (req, res) => {
-    Note.find({ userId: req.params.id })
+router.get('/', auth, (req, res) => {
+    Note.find({ userId: req.user.id })
         .sort({ createDate: -1 })
         .then(items => res.json(items))
 })
@@ -14,7 +13,7 @@ router.get('/:id', auth, (req, res) => {
 router.post('/', auth, (req, res) => {
     let uuid = uuidv4() 
     const newNote = new Note({
-        userId: req.body.userId,
+        userId: req.user.id,
         uuid: uuid,
         restaurantName: req.body.restaurantName,
         img: req.body.img,

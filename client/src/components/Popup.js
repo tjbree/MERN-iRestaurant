@@ -26,7 +26,7 @@ function Popup({ isOpen, setIsOpen, data }) {
         setIsOpen(!isOpen)
     }
     const [note, setNote] = useState('')
-    const {id, name, thumb} = data
+    const {name, thumb} = data
 
     const onChange = e => {
         setNote(e.target.value)
@@ -34,11 +34,9 @@ function Popup({ isOpen, setIsOpen, data }) {
       
     const onSubmit = (e) => {
         e.preventDefault()
-        console.log(id, name, note)
         setIsOpen(!isOpen)
         setNote('')
         const noteItem = {
-            userId: '1',
             restaurantName: name,
             img: thumb, 
             note
@@ -66,7 +64,7 @@ function Popup({ isOpen, setIsOpen, data }) {
                     </FormGroup>              
                     <FormGroup>
                     <Button color='dark' style={{ marginTop: '2rem' }} block disabled={!note}>
-                        Add to My List
+                        Add to List
                     </Button>
                     </FormGroup>
                 </Form>

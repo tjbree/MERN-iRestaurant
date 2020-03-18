@@ -1,5 +1,5 @@
 
-export default function RestaurantReducer(result = {}, action) {
+export default function searchReducer(result = {}, action) {
     switch(action.type) {
         case 'SEARCH':
             return action.payload

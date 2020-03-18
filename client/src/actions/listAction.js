@@ -1,14 +1,17 @@
-export function fetchList(userId) {   
+import { tokenConfig } from './authAction'
+
+export function fetchList() {   
     return (dispatch, getState) => {
         let requestOptions = {
             method: 'GET',
             headers: {
-                'Content-Type': 'application/json'
+                'Content-Type': 'application/json',
+                'x-auth-token': tokenConfig(getState)
             }
         }    
         const baseUrl = 'http://localhost:5000'
 
-        fetch(`${baseUrl}/notes/${userId}`, requestOptions)
+        fetch(`${baseUrl}/notes`, requestOptions)
         .then(response => response.json())
         .then(response => {
             dispatch({
@@ -25,7 +28,8 @@ export function saveToList(note) {
         let requestOptions = {
             method: 'POST',
             headers: {
-                'Content-Type': 'application/json'
+                'Content-Type': 'application/json',
+                'x-auth-token': tokenConfig(getState)
             },
             body: JSON.stringify(note)
         }
@@ -48,7 +52,8 @@ export function removeFromList(noteId) {
         let requestOptions = {
             method: 'DELETE',
             headers: {
-                'Content-Type': 'application/json'
+                'Content-Type': 'application/json',
+                'x-auth-token': tokenConfig(getState)
             }
         }    
         const baseUrl = 'http://localhost:5000'

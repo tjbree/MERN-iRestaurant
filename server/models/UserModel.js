@@ -21,6 +21,5 @@ const UserSchema = new Schema({
   }
 })
 
-const User = mongoose.model('user', UserSchema) // The name inside the quotes will be the name of this table.
-
+const User = mongoose.model('user', UserSchema)
 module.exports = User

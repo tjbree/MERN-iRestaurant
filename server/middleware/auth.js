@@ -8,9 +8,8 @@ function auth(req, res, next) {
     return res.status(401).json({ msg: 'No token, authorizaton denied.' })
 
   try {
-    // Verify token
     const decoded = jwt.verify(token, process.env.jwtSecret)
-    // Add user from payload
+    // req.user is the whole object
     req.user = decoded
     next()
   } catch (e) {

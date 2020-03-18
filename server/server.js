@@ -9,7 +9,6 @@ const app = express()
 app.use(cors())
 app.use(express.json())
 
-// Database
 const uri = process.env.ATLAS_URI
 mongoose.connect(uri, { useUnifiedTopology: true, useNewUrlParser: true, useCreateIndex: true })
     .then(() => console.log('Connected with MongoDB.'))
@@ -20,7 +19,6 @@ connection.once('open', () => {
   console.log('MongoDB database connection established successfully.')
 })
 
-// Routes
 const notesRouter = require('./routes/notes')
 const usersRouter = require('./routes/users')
 const authRouter = require('./routes/auth')

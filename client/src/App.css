@@ -51,3 +51,8 @@ a:hover {
 .list-item > button {
     align-self: center;
 }
+
+.logoutButton {
+    cursor: pointer;
+    color: white;
+}

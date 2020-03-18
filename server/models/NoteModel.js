@@ -11,6 +11,6 @@ const NoteSchema = new Schema({
   createDate : { type: Date, required: true, default: Date.now}
 })
 
-const Note = mongoose.model('note', NoteSchema) // The name inside the quotes will be the name of this table.
+const Note = mongoose.model('note', NoteSchema) // The name inside the quotes is the singular version of the table name.
 
 module.exports = Note

@@ -1,20 +1,16 @@
-import React, { useEffect } from 'react'
+import React from 'react'
 import { Switch, Route } from 'react-router-dom'
-import { useDispatch } from 'react-redux'
 import Header from './components/Header'
 import Home from './components/Home'
 import Restaurants from './components/Restaurants'
+import Register from './components/Register'
+import Login from './components/Login'
 import List from './components/List'
-import { fetchList } from './actions/listAction'
 
 import 'bootstrap/dist/css/bootstrap.min.css'
 import './App.css'
 
 function App() {
-  const dispatch = useDispatch()
-  useEffect(() => {
-    dispatch(fetchList(1))
-  }, [dispatch])
   
   return (
     <div className='App'>
@@ -29,7 +25,12 @@ function App() {
         <Route path='/list'>
           <List />
         </Route>
-        <Route path='/log'>log</Route>
+        <Route path='/register'>
+          <Register />
+        </Route>
+        <Route path='/login'>
+          <Login />
+        </Route>
       </Switch>
     </div>
   )

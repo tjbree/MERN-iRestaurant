@@ -27,7 +27,8 @@ function Register() {
             dispatch(clearErrors())
             history.push('/')
         }
-    },[dispatch, history, isAuthenticated])
+        // eslint-disable-next-line react-hooks/exhaustive-deps
+    },[])
 
     const onChange = e => {
         switch(e.target.name){
